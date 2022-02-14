@@ -5,7 +5,7 @@
 
 ## 2. 项目结构
 
-> **fronted**：前端模块，使用react构建，主要功能有：接入钉钉JSAPI获取authCode、构建工单、获取部门列表。
+> **fronted**：前端模块，使用vue构建，主要功能有：接入钉钉JSAPI获取authCode、构建工单、获取部门列表。
 >
 > **backend**：后端模块，使用springboot构建，主要功能有：使用authCode获取access_token、使用access_token获取用户信息、jsapi鉴权、发送工作通知等。
 
