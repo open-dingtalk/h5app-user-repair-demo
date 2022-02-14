@@ -1,10 +1,42 @@
-# （demo名称）
+# 代码模板——制造企业维修工单集成到钉钉
 
-> - （demo介绍）
-> - （demo结构）
+## 1. 背景介绍
+制造企业生产设备出现故障时，一线生产人员需要将故障问题提交至企业的运维部门进行维修，运维部门的响应速率将直接影响到员工后续工作效率、企业生产进度，与企业生产效益息息相关。
+
+## 2. 项目结构
+
+> **fronted**：前端模块，使用react构建，主要功能有：接入钉钉JSAPI获取authCode、构建工单、获取部门列表。
 >
+> **backend**：后端模块，使用springboot构建，主要功能有：使用authCode获取access_token、使用access_token获取用户信息、jsapi鉴权、发送工作通知等。
 
+以下为目录结构与部分核心代码文件：
 
+```
+.
+├── README.md     ----- 说明文档
+├── backend
+│   ├── dingBoot-linux.sh     ----- 启动脚本（linux）
+│   ├── dingBoot-mac.sh    ----- 启动脚本（mac）
+│   ├── dingBoot-windows.bat     ----- 启动脚本（windows）
+│   ├── pom.xml
+│   └── src
+│     └── main
+│         ├── java
+│         │   └── com
+│         │       └── dingtalk
+│         │           ├── Application.java     ----- 启动类
+│         │           ├── config
+│         │           │   └── AppConfig.java     ----- 应用配置类
+│         │           ├── controller
+│         │           │   └── BizController.java     ----- 核心业务接口
+│         │           └── service
+│         │               └── BizManager.java     ----- 核心业务代码
+│         └── resources
+│             └── application.yml     ----- 应用配置文件
+├── frontend
+│   └── src     ----- 前端展示页面和交互代码
+└── pom.xml
+```
 
 ## 研发环境准备
 
@@ -30,7 +62,8 @@
 
 本demo使用接口相关权限：
 
-（列举该demo需要申请的权限）
+-  “通讯录部门成员读权限”
+-  “成员信息读权限”
 
 ![image-20210706172027870](https://img.alicdn.com/imgextra/i3/O1CN016WCr6428wDdBhkWi6_!!6000000007996-2-tps-1358-571.png)
 
@@ -90,7 +123,7 @@ dingBoot-windows.bat  # windows版本
 ### 下载本项目至本地
 
 ```shell
-git clone (demo下载地址)
+git clone https://github.com/open-dingtalk/h5app-user-repair-demo.git
 ```
 
 ### 获取相应参数
@@ -131,9 +164,10 @@ npm run build
 
 ### 页面展示
 
-（页面截图/功能效果截图）
 
 ### **参考文档**
 
-1. 获取企业内部应用access_token，文档链接：https://developers.dingtalk.com/document/app/obtain-orgapp-token
-2. （请完善文档）
+1. 企业内部应用免登，文档链接：https://open.dingtalk.com/document/orgapp-server/enterprise-internal-application-logon-free
+2. JSAPI鉴权，文档链接：https://open.dingtalk.com/document/orgapp-client/jsapi-authentication
+3. 获取企业内部应用的access_token，文档链接：https://open.dingtalk.com/document/orgapp-server/obtain-orgapp-token
+4. 通过免登码获取用户信息，文档链接：https://open.dingtalk.com/document/orgapp-server/obtain-the-userid-of-a-user-by-using-the-log-free
